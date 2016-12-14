@@ -7,6 +7,7 @@
 
 #include "application.h"
 #include "mainwindow.h"
+#include "file.h"
 
 #include <QApplication>
 
@@ -14,11 +15,10 @@
 #include <windows.h>
 
 
-
 using namespace std;
 int main(int argc, char* argv[])
 {
-    QApplication application(argc,argv);
+    //QApplication application(argc,argv);
     Application app;
 
     /*
@@ -35,11 +35,15 @@ int main(int argc, char* argv[])
     }
     cout << endl;
 
-    MainWindow fenetre;
+    File fichier("../pfe/fichiers_texte/test.txt");
+    fichier.retourneLigne();
+
+    /*MainWindow fenetre;
     fenetre.show();
 
 
     return application.exec();
-
+*/
+    return 0;
 }
 

@@ -4,9 +4,11 @@ QT += widgets
 
 HEADERS += \
     application.h \
-    mainwindow.h
+    mainwindow.h \
+    file.h
 
 SOURCES += \
     main.cpp \
     application.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    file.cpp
