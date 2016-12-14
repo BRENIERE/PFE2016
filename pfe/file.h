@@ -6,6 +6,9 @@
 #include <QString>
 #include <iostream>
 
+#include "application.h"
+#include "windows.h"
+
 
 class File : public QFile
 {
@@ -14,7 +17,9 @@ class File : public QFile
 public:
     File(const QString &name);
     QString retourneLigne();
+    void ecrire(float a, float b, Application* app);
     QString getNomFichier();
+
 
 private:
     File* mFichierEntree;

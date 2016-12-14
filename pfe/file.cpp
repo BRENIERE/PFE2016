@@ -21,6 +21,23 @@ File::File(const QString &name) : QFile(name)
 
  }
 
+ void File :: ecrire(float a, float b, Application* app)
+ {
+     mFichierSortie= new File (fileName());
+
+     if (!mFichierSortie->open(QIODevice::WriteOnly | QIODevice::Text))
+         cout << "error";
+
+     QTextStream out(mFichierSortie);
+     for(int i=1;i<=9;i++)
+     {
+     out << app->loiLaplace(a,b) << " | ";
+     Sleep(1);
+     }
+     out << app->loiLaplace(a,b) << endl;
+     mFichierSortie->close();
+ }
+
  QString File::getNomFichier()
  {
      return fileName();

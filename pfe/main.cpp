@@ -36,7 +36,8 @@ int main(int argc, char* argv[])
     cout << endl;
 
     File fichier("../pfe/fichiers_texte/test.txt");
-    fichier.retourneLigne();
+    fichier.ecrire(1,0.001,&app);
+    cout << fichier.retourneLigne().toStdString() << endl;
 
     /*MainWindow fenetre;
     fenetre.show();
