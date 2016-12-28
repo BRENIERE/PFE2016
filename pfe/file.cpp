@@ -7,7 +7,7 @@ File::File(const QString &name) : QFile(name)
 
 }
 
- QString File:: retourneLigne()
+ QString File:: retourneLigne(int pos)
  {
     mFichierEntree= new File (fileName());
     if(!mFichierEntree->open(QIODevice::ReadOnly | QIODevice::Text))
@@ -17,6 +17,9 @@ File::File(const QString &name) : QFile(name)
 
     QTextStream in(mFichierEntree);
 
+    for(int i=0;i<pos;i++)
+        in.readLine();
+
     return in.readLine();
 
  }
@@ -25,7 +28,7 @@ File::File(const QString &name) : QFile(name)
  {
      mFichierSortie= new File (fileName());
 
-     if (!mFichierSortie->open(QIODevice::WriteOnly | QIODevice::Text))
+     if (!mFichierSortie->open(QIODevice::Append | QIODevice::Text))
          cout << "error";
 
      QTextStream out(mFichierSortie);
@@ -41,4 +44,21 @@ File::File(const QString &name) : QFile(name)
  QString File::getNomFichier()
  {
      return fileName();
+ }
+
+ int File::getNombreDeLignes()
+ {
+     File* file= new File (fileName());
+     if(!file->open(QIODevice::ReadOnly | QIODevice::Text))
+     {
+         cerr << "on ne peut pas lire le fichier" <<endl;
+     }
+
+     QTextStream in(file);
+     int nombreDeLignes = 0;
+     while(in.readLine()!=NULL)
+     {
+         nombreDeLignes++;
+     }
+     return nombreDeLignes;
  }
