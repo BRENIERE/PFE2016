@@ -39,7 +39,7 @@ File::File(const QString &name) : QFile(name)
      QTextStream out(mFichierSortie);
      for(int i=0;i<nbelem-1;i++)
      {
-     out << app->loiLaplace(str[i].toFloat(),b) << " | ";
+     out << app->loiLaplace(str[i].toFloat(),b) << ";";
      Sleep(1);
      }
      out << app->loiLaplace(str[nbelem-1].toFloat(),b) << endl;

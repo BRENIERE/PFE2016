@@ -9,6 +9,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QLineEdit>
+#include <iostream>
 
 
 
@@ -19,9 +21,13 @@ class MainWindow : public QMainWindow
     public:
     MainWindow(Histogramme* histo);
 
+
     private:
     QPushButton* bouton;
     QVBoxLayout* vl;
+
+    private slots:
+    void coucou();
 
 };
 
