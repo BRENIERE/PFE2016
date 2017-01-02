@@ -24,21 +24,27 @@ File::File(const QString &name) : QFile(name)
 
  }
 
- void File :: ecrire(float a, float b, Application* app)
+ void File :: ecrire(QString ligne, float b, Application* app)
  {
      mFichierSortie= new File (fileName());
 
      if (!mFichierSortie->open(QIODevice::Append | QIODevice::Text))
          cout << "error";
 
+
+     QStringList str=ligne.split(";");
+     int nbelem=str.count();
+
+
      QTextStream out(mFichierSortie);
-     for(int i=1;i<=9;i++)
+     for(int i=0;i<nbelem-1;i++)
      {
-     out << app->loiLaplace(a,b) << " | ";
+     out << app->loiLaplace(str[i].toFloat(),b) << " | ";
      Sleep(1);
      }
-     out << app->loiLaplace(a,b) << endl;
+     out << app->loiLaplace(str[nbelem-1].toFloat(),b) << endl;
      mFichierSortie->close();
+
  }
 
  QString File::getNomFichier()

@@ -42,11 +42,12 @@ int main(int argc, char* argv[])
 
     */
 
-    /*
-    File fichier("../pfe/fichiers_texte/test.txt");
-    fichier.ecrire(1,0.1,&app);
-    fichier.ecrire(100,0.1,&app);
 
+    File fichierEntree("../pfe/fichiers_texte/test.txt");
+    File fichierSortie("../pfe/fichiers_texte/out.txt");
+    fichierSortie.ecrire(fichierEntree.retourneLigne(0),10,&app);
+
+    /*
     for(int i=0; i<fichier.getNombreDeLignes();i++)
     {
     cout << fichier.retourneLigne(i).toStdString() << endl;

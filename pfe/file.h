@@ -17,7 +17,7 @@ class File : public QFile
 public:
     File(const QString &name);
     QString retourneLigne(int pos);
-    void ecrire(float a, float b, Application* app);
+    void ecrire(QString ligne, float b, Application* app);
     QString getNomFichier();
     int getNombreDeLignes();
 
