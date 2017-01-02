@@ -8,18 +8,22 @@
 #include "application.h"
 #include "mainwindow.h"
 #include "file.h"
+#include "histogramme.h"
 
 #include <QApplication>
+
 
 #include <iostream>
 #include <windows.h>
 
 
+
 using namespace std;
 int main(int argc, char* argv[])
 {
-    //QApplication application(argc,argv);
+    QApplication application(argc,argv);
     Application app;
+    Histogramme histo;
 
     /*
     for(int i=1;i<=10;i++)
@@ -37,6 +41,8 @@ int main(int argc, char* argv[])
     cout << endl;
 
     */
+
+    /*
     File fichier("../pfe/fichiers_texte/test.txt");
     fichier.ecrire(1,0.1,&app);
     fichier.ecrire(100,0.1,&app);
@@ -46,12 +52,14 @@ int main(int argc, char* argv[])
     cout << fichier.retourneLigne(i).toStdString() << endl;
     }
     cout << fichier.getNombreDeLignes() << endl;
-    /*MainWindow fenetre;
+    */
+
+    MainWindow fenetre(&histo);
     fenetre.show();
 
 
     return application.exec();
-*/
+
     return 0;
 }
 
