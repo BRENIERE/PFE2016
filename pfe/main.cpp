@@ -45,10 +45,15 @@ int main(int argc, char* argv[])
 
     File fichierEntree("../pfe/fichiers_texte/test.txt");
     File fichierSortie("../pfe/fichiers_texte/out.txt");
+    File fichierGarderLigne("../pfe/fichiers_texte/garderLignes.txt");
+    File fichierLignesRestantes("../pfe/fichiers_texte/lignesRestantes.txt");
+
     for (int i=0;i<fichierEntree.getNombreDeLignes();i++)
     {
         fichierSortie.ecrire(fichierEntree.retourneLigne(i),10,&app);
     }
+
+    fichierGarderLigne.garderNLignes(1,&fichierLignesRestantes,&app);
 
     /*
     for(int i=0; i<fichier.getNombreDeLignes();i++)

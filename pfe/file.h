@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QString>
 #include <iostream>
+#include <vector>
 
 #include "application.h"
 #include "windows.h"
@@ -18,6 +19,7 @@ public:
     File(const QString &name);
     QString retourneLigne(int pos);
     void ecrire(QString ligne, float b, Application* app);
+    void garderNLignes(float pourcent, File* ficSortie, Application* app);
     QString getNomFichier();
     int getNombreDeLignes();
 

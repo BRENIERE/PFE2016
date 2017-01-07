@@ -47,6 +47,49 @@ File::File(const QString &name) : QFile(name)
 
  }
 
+ void File :: garderNLignes(float pourcent, File* ficSortie, Application* app)
+ {
+     int nbLigne = this->getNombreDeLignes();
+     int nombreLigneGarde = nbLigne*pourcent;
+     cout << nbLigne << " / " <<nombreLigneGarde << endl;
+     vector <int> tab;
+     int j=0;
+
+     tab.push_back(app->uniformeAleatoire(0,nbLigne-1,"int"));
+     Sleep(1);
+     for (int i=1;i<nombreLigneGarde;i++)
+     {
+        tab.push_back(app->uniformeAleatoire(0,nbLigne-1,"int"));
+        Sleep(1);
+        j=0;
+        while(j<i)
+        {
+
+            if(tab[i]==tab[j])
+            {
+                tab[i]=app->uniformeAleatoire(0,nbLigne-1,"int");
+                Sleep(1);
+                j=0;
+            }
+            else j++;
+        }
+     }
+
+     if (!ficSortie->open(QIODevice::WriteOnly | QIODevice::Text))
+         cout << "error";
+
+     QTextStream out(ficSortie);
+
+     for(int i=0; i<nombreLigneGarde;i++)
+     {
+        cout << tab[i]<<endl;
+        out <<this->retourneLigne(tab[i])<<endl;
+     }
+
+     ficSortie->close();
+
+ }
+
  QString File::getNomFichier()
  {
      return fileName();
