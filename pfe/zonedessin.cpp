@@ -4,7 +4,7 @@
 
 ZoneDessin::ZoneDessin(Histogramme* histo)
 {
-    mHisto=histo;
+  mHisto= histo;
 }
 
 void ZoneDessin::paintEvent(QPaintEvent* event)
@@ -39,7 +39,7 @@ void ZoneDessin::paintEvent(QPaintEvent* event)
         //QPointF p(x,h-marge/4);
         QRectF r(x,h-marge,largeurRect,marge);
         QString text;
-        text.setNum(mHisto->getValeur(i));
+        text.setNum(mHisto->getValeurIntervalle(i));
         painter.drawText(r,Qt::AlignCenter,text);
 
     }
