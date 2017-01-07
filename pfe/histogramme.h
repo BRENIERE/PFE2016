@@ -2,7 +2,7 @@
 #define HISTOGRAMME_H
 
 #define TailleHisto 11
-#define NbValeurReelle 500
+#define NbValeurReelle 2000
 
 
 #include "application.h"

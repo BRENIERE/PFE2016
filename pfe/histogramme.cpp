@@ -33,7 +33,7 @@ Histogramme::Histogramme(QString type, Application* app)
             for(int i=0;i<NbValeurReelle;i++)
             {
                 int j=0;
-                while(mValeursReelles[i]>=mValeursIntervalles[j])
+                while(mValeursReelles[i]>=mValeursIntervalles[j] && j < TailleHisto)
                 {
                     j++;
                 }
