@@ -24,6 +24,31 @@ File::File(const QString &name) : QFile(name)
 
  }
 
+vector<int> File::retourneColonne(int pos)
+ {
+     vector<int>colonne;
+     int nbLignes = this->getNombreDeLignes();
+     QTextStream in(this);
+     QStringList str;
+     QString ligne;
+
+     if(!this->open(QIODevice::ReadOnly | QIODevice::Text))
+     {
+         cerr << "on ne peut pas lire le fichier" <<endl;
+     }
+
+      for(int i=0;i<nbLignes;i++)
+      {
+          ligne=in.readLine();
+          str=ligne.split(";");
+          colonne.push_back(str[pos-1].toInt());
+          cout << colonne[i] <<endl;
+      }
+      return colonne;
+
+ }
+
+
  void File :: ecrire(QString ligne, float b, Application* app)
  {
      mFichierSortie= new File (fileName());

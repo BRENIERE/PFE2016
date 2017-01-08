@@ -23,7 +23,6 @@ public:
     int getMinQuantites();
 
 private:
-    //int mNbValeursRelles;
     float mValeursIntervalles[TailleHisto];
     float mValeursReelles[NbValeurReelle];
     int mQuantites[TailleHisto];

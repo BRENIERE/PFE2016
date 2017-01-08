@@ -48,3 +48,49 @@ float Application::uniformeAleatoire(float min, float max, QString type)
     return 0;
 
 }
+
+vector< vector<int> > Application::enumerationEtOccurence(vector<int> colonne)
+{
+   int tailleColonne = colonne.size();
+   cout << "taille colonne :" << tailleColonne <<endl;
+   vector< vector<int> > tab;
+   vector<int> enumeration;
+   vector<int> occurence;
+   int j=0;
+   int i=1;
+
+   enumeration.push_back(colonne[0]);
+   occurence.push_back(1);
+
+
+  while(i<tailleColonne)
+   {
+       while(j<enumeration.size())
+       {
+           if(i<tailleColonne && colonne[i]==enumeration[j])
+           {
+                occurence[j]++;
+                j=0;
+                i++;
+           }
+           else j++;
+        }
+        if(i<tailleColonne && j==enumeration.size())
+        {
+            enumeration.push_back(colonne[i]);
+            occurence.push_back(1);
+            j=0;
+            i++;
+        }
+    }
+
+   tab.push_back(enumeration);
+   tab.push_back(occurence);
+
+   for (int i=0; i<enumeration.size();i++)
+   {
+       cout << "enum : " << enumeration[i] << " occurence : " << occurence[i] <<endl;
+   }
+
+   return tab;
+}

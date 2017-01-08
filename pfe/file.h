@@ -10,6 +10,7 @@
 #include "application.h"
 #include "windows.h"
 
+using namespace std;
 
 class File : public QFile
 {
@@ -18,6 +19,7 @@ class File : public QFile
 public:
     File(const QString &name);
     QString retourneLigne(int pos);
+    vector<int> retourneColonne(int pos);
     void ecrire(QString ligne, float b, Application* app);
     void garderNLignes(float pourcent, File* ficSortie, Application* app);
     QString getNomFichier();

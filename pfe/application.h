@@ -22,6 +22,7 @@
 #include <random>
 #include <QtGlobal>
 #include <QtCore/qmath.h>
+#include <vector>
 
 ////////////////////////
 ///
@@ -30,6 +31,10 @@
 ///  @brief
 ///
 ////////////////////////
+
+
+using namespace std;
+
 class Application : public QObject
 {
     Q_OBJECT
@@ -37,10 +42,9 @@ class Application : public QObject
     public:
 
     Application();
-
     float loiLaplace(double centre, double epsilon);
-
     float uniformeAleatoire(float min, float max, QString type);
+    vector< vector<int> > enumerationEtOccurence(vector<int> colonne);
 
     signals:
 
