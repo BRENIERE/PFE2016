@@ -54,8 +54,10 @@ int main(int argc, char* argv[])
         fichierSortie.ecrire(fichierEntree.retourneLigne(i),10,&app);
     }
 
-    //fichierGarderLigne.garderNLignes(1,&fichierLignesRestantes,&app);
-    app.enumerationEtOccurence(fichierLireColonne.retourneColonne(1));
+    fichierGarderLigne.garderNLignes(0.4,&fichierLignesRestantes,&app);
+    //fichierGarderLigne.retourneColonne(10);
+    app.enumerationEtOccurence(fichierLireColonne.retourneColonne(2));
+    fichierLignesRestantes.completerFichier(&fichierGarderLigne,0.4,&app);
 
     /*
     for(int i=0; i<fichier.getNombreDeLignes();i++)

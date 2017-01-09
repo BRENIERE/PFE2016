@@ -22,6 +22,7 @@ public:
     vector<int> retourneColonne(int pos);
     void ecrire(QString ligne, float b, Application* app);
     void garderNLignes(float pourcent, File* ficSortie, Application* app);
+    void completerFichier(File* ficOrigine, float pourcent, Application* app);
     QString getNomFichier();
     int getNombreDeLignes();
 

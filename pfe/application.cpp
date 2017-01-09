@@ -89,7 +89,7 @@ vector< vector<int> > Application::enumerationEtOccurence(vector<int> colonne)
 
    for (int i=0; i<enumeration.size();i++)
    {
-       cout << "enum : " << enumeration[i] << " occurence : " << occurence[i] <<endl;
+       cout << "enum : " << tab[0][i] << " occurence : " << tab[1][i] <<endl;
    }
 
    return tab;

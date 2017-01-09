@@ -44,6 +44,7 @@ vector<int> File::retourneColonne(int pos)
           colonne.push_back(str[pos-1].toInt());
           cout << colonne[i] <<endl;
       }
+      this->close();
       return colonne;
 
  }
@@ -112,6 +113,58 @@ vector<int> File::retourneColonne(int pos)
      }
 
      ficSortie->close();
+
+ }
+
+ void File::completerFichier(File* ficOrigine, float pourcent, Application* app)
+ {
+     int tailleOrigine = ficOrigine->getNombreDeLignes();
+     cout << "taille origine : " << tailleOrigine <<endl;
+     int nbLignesRajoutees = tailleOrigine*(1-pourcent);
+     int aleatoire=0;
+     int compteur=0;
+     QString ligne = ficOrigine->retourneLigne(1);
+     QStringList str=ligne.split(";");
+     int nbelem=str.count();
+     cout << "nombre colonne : " << nbelem <<endl;
+     vector< vector < vector <int> > > tabComplet;
+     QTextStream out(this);
+
+
+     if (!ficOrigine->open(QIODevice::ReadOnly | QIODevice::Text))
+         cout << "error";
+
+     if (!this->open(QIODevice::Append | QIODevice::Text))
+         cout << "error";
+
+     for (int i=0; i<nbelem;i++)
+     {
+        cout << "colonne numero: " <<i+1 <<endl;
+        tabComplet.push_back(app->enumerationEtOccurence(ficOrigine->retourneColonne(i+1)));
+        cout <<"premiere enum :" << tabComplet[i][0][0] <<endl;
+        cout << "occurence : " << tabComplet[i][1][0]<<endl;
+     }
+
+    for (int i =0; i<nbLignesRajoutees;i++)
+    {
+        for(int j=0;j<nbelem;j++)
+        {
+            int position =0;
+            aleatoire = app->uniformeAleatoire(1,tailleOrigine,"int");
+            Sleep(1);
+            while(aleatoire>compteur)
+            {
+                compteur+=tabComplet[j][1][position];
+                position++;
+            }
+            position--;
+            compteur=0;
+            out<<tabComplet[j][0][position]<<";";
+        }
+        out<<endl;
+    }
+
+    this->close();
 
  }
 
