@@ -3,8 +3,9 @@
 
 using namespace std;
 
-Histogramme::Histogramme(QString type, Application* app)
+Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle)
 {
+    mNbValeurReelle=NbValeurReelle;
     for(int i=0;i<TailleHisto;i++)
     {
         mQuantites[i]=0;
@@ -21,7 +22,7 @@ Histogramme::Histogramme(QString type, Application* app)
         {
             for(int i=0;i<NbValeurReelle;i++)
             {
-                mValeursReelles[i]=app->loiLaplace(100.0,10);
+                mValeursReelles.push_back(app->loiLaplace(100.0,10));
                 Sleep(1);
                 //cout << mValeursReelles[i] <<endl;
             }
@@ -62,7 +63,7 @@ float Histogramme::getValeurReelle(int i)
 float Histogramme::getMaxValeurReelle()
 {
     float max=mValeursReelles[0];
-    for(int i=0;i<NbValeurReelle;i++)
+    for(int i=0;i< mNbValeurReelle;i++)
     {
         if(mValeursReelles[i]>max)
             max=mValeursReelles[i];
@@ -73,7 +74,7 @@ float Histogramme::getMaxValeurReelle()
 float Histogramme::getMinValeurReelle()
 {
     float min=mValeursReelles[0];
-    for(int i=0;i<NbValeurReelle;i++)
+    for(int i=0;i<mNbValeurReelle;i++)
     {
         if(mValeursReelles[i]<min)
             min=mValeursReelles[i];

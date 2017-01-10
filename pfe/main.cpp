@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 {
     QApplication application(argc,argv);
     Application app;
-    Histogramme* histo = new Histogramme("valeurBruitee",&app);
+    Histogramme* histo = new Histogramme("valeurBruitee",&app,2000);
 
     /*
     for(int i=1;i<=10;i++)
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
     cout << fichier.getNombreDeLignes() << endl;
     */
 
-    MainWindow fenetre(histo);
+    MainWindow fenetre(histo,&app);
     fenetre.show();
 
 

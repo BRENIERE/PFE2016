@@ -2,20 +2,24 @@
 
 using namespace std;
 
-MainWindow::MainWindow(Histogramme* histo)
+MainWindow::MainWindow(Histogramme* histo, Application* app)
 {
-
+    mApp=app;
+    mHisto=histo;
     QWidget* fenetre = new QWidget();
-    ZoneDessin* zoneDessin = new ZoneDessin(histo);
-    setCentralWidget(fenetre);
-    fenetre->setFixedSize(800,400);
-    bouton = new QPushButton("toto");
-    QLineEdit *lineEdit = new QLineEdit("Entrez un nom de fichier");
+    mFenetre=fenetre;
+    ZoneDessin* zoneDessin = new ZoneDessin(mHisto);
+    mZoneDessin=zoneDessin;
+    setCentralWidget(mFenetre);
+    mFenetre->setFixedSize(800,400);
+    bouton = new QPushButton("Actualiser");
+    lineEdit = new QLineEdit("500");
+    lineEdit->setInputMask("00009 ");
     vl = new QVBoxLayout();
-    vl->addWidget(zoneDessin);
+    vl->addWidget(mZoneDessin);
     vl->addWidget(lineEdit);
     vl->addWidget(bouton);
-    fenetre->setLayout(vl);
+    mFenetre->setLayout(vl);
 
     connect(bouton, SIGNAL(clicked()), this, SLOT(coucou()));
 
@@ -24,5 +28,20 @@ MainWindow::MainWindow(Histogramme* histo)
 
 void MainWindow::coucou()
 {
-    cout << "coucou" << endl;
+    int nbValeur;
+    QString text = lineEdit->text();
+    cout << "mon texte est : " << text.toStdString() << endl;
+    if(text==" ")
+    {
+        cout << "veuillez saisir une valeur correcte !" <<endl;
+    }
+    else
+    {
+        nbValeur = text.toInt();
+        cout << "nbValeur = "<< nbValeur <<endl;
+        mHisto = new Histogramme("valeurBruitee",mApp,nbValeur);
+        mZoneDessin->changerHisto(mHisto);
+        mFenetre->update();
+
+    }
 }

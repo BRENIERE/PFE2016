@@ -7,7 +7,7 @@ ZoneDessin::ZoneDessin(Histogramme* histo)
   mHisto= histo;
 }
 
-void ZoneDessin::paintEvent(QPaintEvent* event)
+void ZoneDessin::paintEvent(QPaintEvent* /*event*/)
 {
     QPainter painter(this);
     int marge = 30;
@@ -50,4 +50,9 @@ void ZoneDessin::paintEvent(QPaintEvent* event)
     painter.drawText(r2,Qt::AlignCenter,textMax);
     painter.drawText(r3,Qt::AlignCenter,textMin);
     painter.end();
+}
+
+void ZoneDessin::changerHisto(Histogramme* histo)
+{
+    mHisto=histo;
 }

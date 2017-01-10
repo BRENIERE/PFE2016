@@ -4,13 +4,14 @@
 #include <QWidget>
 #include <QPainter>
 #include <QPaintEvent>
-#include "mainwindow.h"
+
 #include "histogramme.h"
 
 class ZoneDessin : public QWidget
 {
 public:
     ZoneDessin(Histogramme* histo);
+    void changerHisto(Histogramme* histo);
 
 private:
     Histogramme* mHisto;
