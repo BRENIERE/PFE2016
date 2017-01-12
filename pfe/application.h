@@ -5,7 +5,7 @@
 ///  @author VIOLET Julien
 ///  @author BRENIERE Loup
 ///  @version 1
-///  @date 5/12/2016
+///  @date 12/01/2017
 ///
 ///
 ///
@@ -28,7 +28,7 @@
 ///
 ///  @class Application
 ///
-///  @brief
+///  @brief classe qui définit les fonctions princiaples
 ///
 ////////////////////////
 
@@ -41,9 +41,43 @@ class Application : public QObject
 
     public:
 
+    /////////////////////////////
+    ///
+    /// @brief Constructor.
+    ///
+    /// initialise l'application.
+    ///
+    /////////////////////////////
     Application();
+
+    /////////////////////////////
+    ///
+    /// @brief Retourne une variable aléatoire associé à la loi de laplace de moyenne centre et de parametre epsilon
+    ///
+    /// @param centre : moyenne de loi la loi de laplace
+    /// @param epsilon : parametre epsilon
+    ///
+    /////////////////////////////
     float loiLaplace(double centre, double epsilon);
+
+    /////////////////////////////
+    ///
+    /// @brief Retourne une variable aléatoire associé à une loi uniforme entre min et max
+    ///
+    /// @param min : valeur minimale
+    /// @param max : valeur maximale
+    /// @param type : int ou reel
+    ///
+    /////////////////////////////
     float uniformeAleatoire(float min, float max, QString type);
+
+    /////////////////////////////
+    ///
+    /// @brief Retourne un vecteur ayant un vecteur de valeur et un vecteur de d'occurence
+    ///
+    /// @param colonne : vecteur d'entier
+    ///
+    /////////////////////////////
     vector< vector<int> > enumerationEtOccurence(vector<int> colonne);
 
     signals:
