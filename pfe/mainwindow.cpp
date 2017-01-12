@@ -10,14 +10,30 @@ MainWindow::MainWindow(Histogramme* histo, Application* app)
     mFenetre=fenetre;
     ZoneDessin* zoneDessin = new ZoneDessin(mHisto);
     mZoneDessin=zoneDessin;
+    mZoneDessin->setMinimumSize(800,300);
     setCentralWidget(mFenetre);
-    mFenetre->setFixedSize(800,400);
+    mFenetre->setFixedSize(800,600);
     bouton = new QPushButton("Actualiser");
-    lineEdit = new QLineEdit("500");
-    lineEdit->setInputMask("00009 ");
+    lineEditNbValeur = new QLineEdit("500");
+    lineEditCentre = new QLineEdit("200.0");
+    lineEditEpsilon = new QLineEdit("1.0");
+    lineEditNbValeur->setInputMask("00009");
+    lineEditCentre->setInputMask("00009.9");
+    lineEditEpsilon->setInputMask("009.900");
+    labelNbValeur = new QLabel();
+    labelCentre = new QLabel();
+    labelEpsilon = new QLabel();
+    labelNbValeur->setText("Nombre de valeur :");
+    labelCentre->setText("Moyenne :");
+    labelEpsilon->setText("Epsilon :");
     vl = new QVBoxLayout();
     vl->addWidget(mZoneDessin);
-    vl->addWidget(lineEdit);
+    vl->addWidget(labelNbValeur);
+    vl->addWidget(lineEditNbValeur);
+    vl->addWidget(labelCentre);
+    vl->addWidget(lineEditCentre);
+    vl->addWidget(labelEpsilon);
+    vl->addWidget(lineEditEpsilon);
     vl->addWidget(bouton);
     mFenetre->setLayout(vl);
 
@@ -29,17 +45,25 @@ MainWindow::MainWindow(Histogramme* histo, Application* app)
 void MainWindow::coucou()
 {
     int nbValeur;
-    QString text = lineEdit->text();
-    cout << "mon texte est : " << text.toStdString() << endl;
-    if(text==" ")
+    float centre;
+    float epsilon;
+    QString textValeur = lineEditNbValeur->text();
+    QString textCentre = lineEditCentre->text();
+    QString textEpsilon = lineEditEpsilon->text();
+    cout << "mon texte est : " << textValeur.toStdString() << endl;
+    if(textValeur==" " || textCentre==" " || textEpsilon==" ")
     {
         cout << "veuillez saisir une valeur correcte !" <<endl;
     }
     else
     {
-        nbValeur = text.toInt();
+        nbValeur = textValeur.toInt();
+        centre = textCentre.toFloat();
+        epsilon = textEpsilon.toFloat();
         cout << "nbValeur = "<< nbValeur <<endl;
-        mHisto = new Histogramme("valeurBruitee",mApp,nbValeur);
+        cout << "nbCentre = "<< centre <<endl;
+        cout << "nbEpsilon = "<< epsilon <<endl;
+        mHisto = new Histogramme("valeurBruitee",mApp,nbValeur,centre,epsilon);
         mZoneDessin->changerHisto(mHisto);
         mFenetre->update();
 

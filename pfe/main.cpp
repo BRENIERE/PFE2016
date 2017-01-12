@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 {
     QApplication application(argc,argv);
     Application app;
-    Histogramme* histo = new Histogramme("valeurBruitee",&app,2000);
+    Histogramme* histo = new Histogramme("valeurBruitee",&app,2000,100.0,10);
 
     /*
     for(int i=1;i<=10;i++)

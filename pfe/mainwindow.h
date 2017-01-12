@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLineEdit>
+#include <QLabel>
 
 #include "zonedessin.h"
 #include "histogramme.h"
@@ -26,7 +27,12 @@ class MainWindow : public QMainWindow
     private:
     QPushButton* bouton;
     QVBoxLayout* vl;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditNbValeur;
+    QLineEdit* lineEditCentre;
+    QLineEdit* lineEditEpsilon;
+    QLabel* labelNbValeur;
+    QLabel* labelCentre;
+    QLabel* labelEpsilon;
     Application* mApp;
     Histogramme* mHisto;
     QWidget* mFenetre;

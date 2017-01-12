@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle)
+Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle, float centre, float epsilon)
 {
     mNbValeurReelle=NbValeurReelle;
     for(int i=0;i<TailleHisto;i++)
@@ -22,7 +22,7 @@ Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle)
         {
             for(int i=0;i<NbValeurReelle;i++)
             {
-                mValeursReelles.push_back(app->loiLaplace(100.0,10));
+                mValeursReelles.push_back(app->loiLaplace(centre,epsilon));
                 Sleep(1);
                 //cout << mValeursReelles[i] <<endl;
             }

@@ -159,7 +159,12 @@ vector<int> File::retourneColonne(int pos)
             }
             position--;
             compteur=0;
-            out<<tabComplet[j][0][position]<<";";
+            if(j==nbelem-1)
+            {
+                out<<tabComplet[j][0][position];
+            }
+            else out<<tabComplet[j][0][position]<<";";
+
         }
         out<<endl;
     }

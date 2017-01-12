@@ -16,7 +16,7 @@ using namespace std;
 class Histogramme
 {
 public:
-    Histogramme(QString type, Application* app, int NbValeurReelle);
+    Histogramme(QString type, Application* app, int NbValeurReelle, float centre, float epsilon);
     float getValeurIntervalle(int i);
     float getValeurReelle(int i);
     float getMaxValeurReelle();
