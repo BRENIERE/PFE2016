@@ -45,8 +45,13 @@ void ZoneDessin::paintEvent(QPaintEvent* /*event*/)
     int largeurRect = (w - 2*marge)/TailleHisto;
     QRectF r(marge+TailleHisto*largeurRect-largeurRect/2,h-marge,largeurRect,marge);
     QString text;
-    text.setNum(mHisto->getMaxValeurReelle());
-    painter.drawText(r,Qt::AlignCenter,text);
+    QString type="valeurBruitee";
+    QString getType = mHisto->getType();
+    if(getType.compare(type)==0)
+    {
+        text.setNum(mHisto->getMaxValeurReelle());
+        painter.drawText(r,Qt::AlignCenter,text);
+    }
     QString textMax,textMin;
     QRectF r2(0,0,marge,marge*2),r3(0,h-2*marge,marge,marge*2);
     textMax.setNum(max);

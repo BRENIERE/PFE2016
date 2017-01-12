@@ -12,6 +12,7 @@ Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle, flo
     }
     if(type=="test")
     {
+        mType = "test";
             for(int i=0;i<TailleHisto;i++)
             {
                 mValeursIntervalles[i]=100.5+10.0*i;
@@ -20,6 +21,7 @@ Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle, flo
     }
     else if(type=="valeurBruitee")
         {
+            mType = "valeurBruitee";
             for(int i=0;i<NbValeurReelle;i++)
             {
                 mValeursReelles.push_back(app->loiLaplace(centre,epsilon));
@@ -119,4 +121,9 @@ int Histogramme::getMinQuantites()
             min=mQuantites[i];
     }
     return min;
+}
+
+QString Histogramme::getType()
+{
+    return mType;
 }

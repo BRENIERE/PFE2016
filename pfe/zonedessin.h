@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QPaintEvent>
+#include <iostream>
 
 #include "histogramme.h"
 

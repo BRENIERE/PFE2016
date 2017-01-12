@@ -24,12 +24,14 @@ public:
     int getQuantite(int i);
     int getMaxQuantites();
     int getMinQuantites();
+    QString getType();
 
 private:
     float mValeursIntervalles[TailleHisto];
     vector<float> mValeursReelles;
     int mQuantites[TailleHisto];
     int mNbValeurReelle;
+    QString mType;
 
 };
 
