@@ -36,13 +36,17 @@ void ZoneDessin::paintEvent(QPaintEvent* /*event*/)
         QRectF rectangle(x, y, largeurRect, hauteurRect);
         painter.drawRect(rectangle);
 
-        //QPointF p(x,h-marge/4);
-        QRectF r(x,h-marge,largeurRect,marge);
+        QRectF r(x-largeurRect/2,h-marge,largeurRect,marge);
         QString text;
         text.setNum(mHisto->getValeurIntervalle(i));
         painter.drawText(r,Qt::AlignCenter,text);
 
     }
+    int largeurRect = (w - 2*marge)/TailleHisto;
+    QRectF r(marge+TailleHisto*largeurRect-largeurRect/2,h-marge,largeurRect,marge);
+    QString text;
+    text.setNum(mHisto->getMaxValeurReelle());
+    painter.drawText(r,Qt::AlignCenter,text);
     QString textMax,textMin;
     QRectF r2(0,0,marge,marge*2),r3(0,h-2*marge,marge,marge*2);
     textMax.setNum(max);

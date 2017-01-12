@@ -29,7 +29,18 @@ Histogramme::Histogramme(QString type, Application* app, int NbValeurReelle, flo
             //cout << "valeur max :"<< getMaxValeurReelle()<<endl;
             for(int i=0;i<TailleHisto;i++)
             {
-                mValeursIntervalles[i]=getMinValeurReelle()+i*(getMaxValeurReelle()-getMinValeurReelle())/TailleHisto;
+                //mValeursIntervalles[i]=getMinValeurReelle()+i*(getMaxValeurReelle()-getMinValeurReelle())/TailleHisto;
+                if((centre-(this->getMinValeurReelle()))>((this->getMaxValeurReelle())-centre))
+                {
+                    mValeursIntervalles[i]=getMinValeurReelle()+i*2*(centre-(this->getMinValeurReelle()))/TailleHisto;
+                    mValeursIntervalles[i]=(1./10.)*floor(10*mValeursIntervalles[i]);
+                }
+                else
+                {
+                     mValeursIntervalles[TailleHisto-i-1]=getMaxValeurReelle()-i*2*((this->getMaxValeurReelle())-centre)/TailleHisto;
+                     mValeursIntervalles[TailleHisto-i-1]=(1./10.)*floor(10*mValeursIntervalles[TailleHisto-i-1]);
+                }
+
             }
             for(int i=0;i<NbValeurReelle;i++)
             {
